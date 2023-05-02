@@ -20,11 +20,11 @@ const Header = () => {
                             <li><Link className="  normal-case text-xl text-white" to='/registration'>Registration</Link></li>
                         </ul>
                     </div>
-                    <img className='md:w-4/12 w-8/12' src="https://i.ibb.co/2gytMjj/logo.png" />
+                    <img className='md:w-3/12 w-8/12' src="https://i.ibb.co/2gytMjj/logo.png" />
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
-                        <li className=' className="normal-case text-xl text-white hover:bg-black'><Link to='/'>Home</Link></li>
+                        <li className=' className="normal-case text-xl text-white' ><Link to='/'>Home</Link></li>
                         <li>
                         <Link className="normal-case text-xl text-white" to='/blog'>Blog</Link>
                         </li>
