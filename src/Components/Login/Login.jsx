@@ -4,14 +4,13 @@ import { Link } from 'react-router-dom';
 const Login = () => {
     return (
         <div>
-            Login
             <div className='my-16 md:my-20 md:w-10/12 w-11/12 mx-auto'>
-                <div className="container mx-auto lg:flex lg:flex-row items-center p-16 rounded-3xl  shadow-2xl">
+                <div className="container mx-auto lg:flex lg:flex-row items-center md:p-16 py-8 rounded-3xl  shadow-2xl">
                     <div className="md:w-1/2">
-                        <h1 className='text-3xl mb-8'>Welcome to <span className='text-orange-500 font-bold italic'>DELIZIOSO</span></h1>
-                        <img src="https://i.ibb.co/02cv3zG/My-password-bro.png" alt="About Us Image" className="md:w-10/12 object-cover " />
+                        <h1 className='text-3xl mb-8 md:text-start text-center'>Welcome to <span className='text-orange-500 font-bold italic'>DELIZIOSO</span></h1>
+                        <img src="https://i.ibb.co/02cv3zG/My-password-bro.png" alt="About Us Image" className="md:w-10/12 object-cover" />
                     </div>
-                    <div className="md:w-1/2 ">
+                    <div className="md:w-1/2 w-full ">
                         <div className="card flex-shrink-0 w-full">
                             <div className="card-body">
                                 <div className="form-control">
@@ -44,7 +43,7 @@ const Login = () => {
                                         </button>
                                     </div>
                             <div>
-                                <p className='text-sm'>New to <span className='font-semibold text-orange-500'>DELIZIOSO</span> ?<Link to="/registration"><button className="btn btn-active btn-link normal-case text-sm text-sky-700 ">Sign Up Here</button>
+                                <p className='text-sm'>New to <span className='font-semibold text-orange-500'>DELIZIOSO</span> ?<Link to="/registration"><button className="btn btn-active btn-link normal-case text-sm text-sky-700 ">Registration Here</button>
                                 </Link></p>
                             </div>
                                 </div>
