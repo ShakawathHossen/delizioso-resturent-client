@@ -2,10 +2,10 @@ import React from 'react';
 
 const AboutUs = () => {
     return (
-        <div className='my-16 md:w-10/12 w-11/12 mx-auto'>
+        <div className='my-16 md:my-20 md:w-10/12 w-11/12 mx-auto'>
                 <div className="container mx-auto lg:flex lg:flex-row items-center">
                     <div className="md:w-1/2">
-                        <img src="https://i.ibb.co/f8LCZ2W/about-1.jpg" alt="About Us Image" className="md:w-10/12 object-cover rounded-2xl shadow-xl shadow-gray-500" />
+                        <img src="https://i.ibb.co/f8LCZ2W/about-1.jpg" alt="About Us Image" className="md:w-10/12 object-cover rounded-xl shadow-xl shadow-gray-500 hover:shadow-2xl hover:shadow-gray-500 duration-200" />
                     </div>
                     <div className="md:w-1/2 ">
                         <div className="my-8 lg:my-0">
