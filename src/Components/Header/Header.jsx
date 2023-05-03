@@ -6,7 +6,7 @@ const Header = () => {
     return (
         <div>
             {/* navbar  */}
-            <div className="bg-orange-600">
+            <div className="bg-orange-600 ">
                 <div className="navbar w-10/12 mx-auto">
                     <div className="navbar-start">
                         <div className="dropdown">
@@ -57,15 +57,6 @@ const Header = () => {
                                         Login
                                     </NavLink>
                                 </li>
-                                <li>
-                                    <NavLink
-                                        to="/registration"
-                                        className="normal-case text-xl text-white"
-                                        activeClassName="active"
-                                    >
-                                        Registration
-                                    </NavLink>
-                                </li>
                             </ul>
                         </div>
                         <img className="md:w-3/12 w-8/12" src="https://i.ibb.co/2gytMjj/logo.png" />
@@ -76,7 +67,7 @@ const Header = () => {
                                 <NavLink
                                     exact
                                     to="/"
-                                    className="normal-case text-2xl px-8 py-2 text-white"
+                                    className="normal-case text-xl  px-6 py-1 text-white"
                                     activeClassName="active"
                                 >
                                     Home
@@ -85,7 +76,7 @@ const Header = () => {
                             <>
                                 <NavLink
                                     to="/blog"
-                                    className="normal-case text-2xl px-8 py-2 text-white"
+                                    className="normal-case text-xl  px-6 py-1 text-white"
                                     activeClassName="active"
                                 >
                                     Blog
@@ -94,19 +85,10 @@ const Header = () => {
                             <>
                                 <NavLink
                                     to="/login"
-                                    className="normal-case text-2xl px-8 py-2 text-white"
+                                    className="normal-case text-xl px-6 py-1 text-white"
                                     activeClassName="active"
                                 >
                                     Login
-                                </NavLink>
-                            </>
-                            <>
-                                <NavLink
-                                    to="/registration"
-                                    className="normal-case text-2xl px-8 py-2 text-white"
-                                    activeClassName="active"
-                                >
-                                    Registration
                                 </NavLink>
                             </>
                         </ul>
