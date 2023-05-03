@@ -11,11 +11,13 @@ import Home from './Components/Home/Home.jsx';
 import Blog from './Components/Blog/Blog.jsx';
 import Login from './Components/Login/Login.jsx';
 import Registration from './Components/Registration/Registration.jsx';
+import ErrorPage from './Components/ErrorPage/ErrorPage.jsx';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement: <ErrorPage/>,
     children: [
       {
         path: "/",
@@ -35,6 +37,11 @@ const router = createBrowserRouter([
       },
     ],
   },
+  {
+    path: "*",
+    element:<ErrorPage/>
+
+  }
 ]);
 
 
