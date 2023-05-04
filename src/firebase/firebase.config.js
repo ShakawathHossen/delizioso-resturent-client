@@ -4,13 +4,15 @@ import { initializeApp } from "firebase/app";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
+
+console.log("Env",import.meta.env.VITE_)
 const firebaseConfig = {
-  apiKey: "AIzaSyAvGUiYcE6wsrW6XbwZA4Ckj0CIecYipMY",
-  authDomain: "delizioso-resturent.firebaseapp.com",
-  projectId: "delizioso-resturent",
-  storageBucket: "delizioso-resturent.appspot.com",
-  messagingSenderId: "667050783871",
-  appId: "1:667050783871:web:9e15f00ef896e5814cbb4a"
+  apiKey: import.meta.env.VITE_APIKEY,
+  authDomain:import.meta.env.VITE_authDomain,
+  projectId:import.meta.env.VITE_projectId,
+  storageBucket:import.meta.env.VITE_storageBucket,
+  messagingSenderId:import.meta.env.VITE_messagingSenderId,
+  appId:import.meta.env.VITE_appId ,
 };
 
 // Initialize Firebase
