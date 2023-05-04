@@ -12,6 +12,7 @@ import Blog from './Components/Blog/Blog.jsx';
 import Login from './Components/Login/Login.jsx';
 import Registration from './Components/Registration/Registration.jsx';
 import ErrorPage from './Components/ErrorPage/ErrorPage.jsx';
+import CheifDetails from './Components/CheifDetails/CheifDetails.jsx';
 
 const router = createBrowserRouter([
   {
@@ -21,7 +22,13 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element:<Home></Home>
+        element:<Home></Home>,
+        loader:()=>fetch(`http://localhost:5000/chiefs`)
+      },
+      {
+        path: "/:id",
+        element: <CheifDetails/>,
+        loader:()=>fetch(`http://localhost:5000/chiefs`)
       },
       {
         path: "/blog",
