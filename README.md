@@ -1,4 +1,4 @@
-<h1>Project Name: Recipe Routes</h1>
+<h1>Project Name: DELIZIOSO</h1>
 <p>This project is about Best chefs and Recipes in Bangladesh and it is create with Modern React Js</p>
 <h2>Feature:</h2>
 <li>Header Section Different Type of option </li>
