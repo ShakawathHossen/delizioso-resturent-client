@@ -1,20 +1,46 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Rating from 'react-rating';
 import { useLoaderData, useParams } from 'react-router-dom';
+import { FaRegBookmark, FaBookmark, FaRegStar, FaStar } from 'react-icons/fa';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const CheifDetails = () => {
     const { id } = useParams();
     const cheifs = useLoaderData();
     const cheif = cheifs.find((c) => c.id == id);
 
+    const [bookmarks, setBookmarks] = useState(
+        cheif.recipe_details.map(() => false)
+    );
+
     if (!cheif) {
         return <div>Loading...</div>;
     }
-    let recipeDetails = cheif.recipe_details;
-    console.log(recipeDetails)
 
+    const handleBookmarkClick = (index) => {
+        setBookmarks((prevBookmarks) =>
+            prevBookmarks.map((b, i) => (i === index ? true : b))
+        );
+        toast.success('Added to Favorites');
+    };
+
+    let recipeDetails = cheif.recipe_details;
 
     return (
         <div>
+            <ToastContainer
+                position="top-right"
+                autoClose={2000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="dark"
+            />
             <div className='md:w-10/12 mx-auto py-14'>
                 <div className='mx-auto '>
                     <div className="mx-auto lg:flex lg:flex-row items-center rounded-3xl  shadow-md py-6 px-10">
@@ -33,25 +59,44 @@ const CheifDetails = () => {
             </div>
 
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-3 md:w-10/12 mx-auto">
-                {recipeDetails.map(recipe =>
+                {recipeDetails.map((recipe, index) => (
                     <div key={recipe.id} className="">
-                        <div className='px-10 shadow-md py-6 bg-orange-50 card'>
+                        <div className="px-10 shadow-md py-6 bg-orange-50 card">
                             <div className="card-title">
-                            <h1>{recipe.recipe_name}</h1>
+                                <h1>{recipe.recipe_name}</h1>
                             </div>
-                            <p className='text-sm pb-3'><span className='font-bold text-md'>Ingredients: </span>{recipe.ingredients}</p>
-                            <p className='text-sm pb-3'><span className='font-bold text-md'>Cooking Method: </span>{recipe.cooking_method}</p>
+                            <p className="text-sm pb-3">
+                                <span className="font-bold text-md">Ingredients: </span>
+                                {recipe.ingredients}
+                            </p>
+                            <p className="text-sm pb-3">
+                                <span className="font-bold text-md">Cooking Method: </span>
+                                {recipe.cooking_method}
+                            </p>
+                            <p className="text-sm pb-3">
+                                <span className="font-bold text-md">Ratings: </span>
+                                <Rating
+                                    placeholderRating={recipe.ratings}
+                                    emptySymbol={<FaRegStar></FaRegStar>}
+                                    readonly
+                                    placeholderSymbol={<FaStar></FaStar>}
+                                    fullSymbol={<FaStar></FaStar>}
+                                ></Rating>
+                            </p>
 
                             <div className="card-actions justify-end">
-      <button className="">Favorite</button>
-    </div>
-                           
+                                <button
+                                    className=""
+                                    onClick={() => handleBookmarkClick(index)}
+                                    disabled={bookmarks[index]}
+                                >
+                                    {bookmarks[index] ? <FaBookmark /> : <FaRegBookmark />}
+                                </button>
+                            </div>
                         </div>
                     </div>
-                )}
+                ))}
             </div>
-
-
         </div>
     );
 };

@@ -42,7 +42,7 @@ const Cheif = () => {
                 <div className='grid lg:grid-cols-3 justify-items-center'>
                     {cheifs.map(cheif => <SingleCheif key={cheif.id} cheif={cheif} ></SingleCheif>)}
                 </div>
-            }
+            } 
         </div>
     );
 };
