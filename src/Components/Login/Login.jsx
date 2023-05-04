@@ -1,7 +1,44 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../Providers/AuthProvider';
+import { GoogleAuthProvider, getAuth, signInWithPopup } from 'firebase/auth';
+import app from '../../firebase/firebase.config';
+
 
 const Login = () => {
+    const {signIn}=useContext(AuthContext);
+    const nevigate= useNavigate();
+    const location = useLocation()
+    const from=location.state?.from.pathname || '/'
+    const Auth=getAuth(app);
+    const provider= new GoogleAuthProvider();
+
+    const handleGoogleSignIn=()=>{
+        signInWithPopup(Auth,provider)
+        .then(result=>{
+            const user=result.data;
+            nevigate(from,{replace:true})
+
+        })
+        .catch(err=>{console.log(err);});
+    }
+
+    const handleLogin =event => {
+        event.preventDefault();
+        const form=event.target;
+        const email=form.email.value;
+        const password=form.password.value;
+        console.log(email,password);
+        signIn(email,password)
+        .then(result=>{
+            const loggedUser=result.user;
+            console.log(loggedUser);
+            nevigate(from,{replace:true})
+        })
+        .catch(err=>{
+            console.log(err);
+        })
+    }
     return (
         <div>
             <div className='my-16 md:my-20 md:w-10/12 w-11/12 mx-auto'>
@@ -12,18 +49,18 @@ const Login = () => {
                     </div>
                     <div className="md:w-1/2 w-full ">
                         <div className="card flex-shrink-0 w-full">
-                            <div className="card-body">
+                            <form onSubmit={handleLogin} className="card-body">
                                 <div className="form-control">
                                     <label className="label">
                                         <span className="label-text text-lg">Email</span>
                                     </label>
-                                    <input type="text" placeholder="Your Email" className="input input-bordered" />
+                                    <input type="email" name='email' placeholder="Your Email" className="input input-bordered" required />
                                 </div>
                                 <div className="form-control">
                                     <label className="label">
                                         <span className="label-text text-lg">Password</span>
                                     </label>
-                                    <input type="text" placeholder="Password" className="input input-bordered" />
+                                    <input type="password" name='password' placeholder="Password" className="input input-bordered" required />
                                     <label className="label">
                                         <a href="#" className="label-text-alt text-lg link link-hover">Forgot password?</a>
                                     </label>
@@ -34,7 +71,7 @@ const Login = () => {
                                 <div className='text-center  mt-6'>
                                     <p className='text-lg'>Or Connect With</p>
                                     <div className='my-4'>
-                                        <button className='px-4'>
+                                        <button onClick={handleGoogleSignIn} className='px-4'>
                                             <img className='w-10' src="https://i.ibb.co/ftwyb00/Google-G-Logo-svg.png" alt="" />
                                         </button>
                                         <button className='px-4'>
@@ -47,7 +84,7 @@ const Login = () => {
                                 </Link></p>
                             </div>
                                 </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>

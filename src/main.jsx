@@ -13,6 +13,8 @@ import Login from './Components/Login/Login.jsx';
 import Registration from './Components/Registration/Registration.jsx';
 import ErrorPage from './Components/ErrorPage/ErrorPage.jsx';
 import CheifDetails from './Components/CheifDetails/CheifDetails.jsx';
+import AuthProvider from './Providers/AuthProvider.jsx';
+import PrivateRoute from './PrivateRoute/PrivateRoute.jsx';
 
 const router = createBrowserRouter([
   {
@@ -27,7 +29,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/:id",
-        element: <CheifDetails/>,
+        element: <PrivateRoute><CheifDetails/></PrivateRoute>,
         loader:()=>fetch(`http://localhost:5000/chiefs`)
       },
       {
@@ -64,6 +66,8 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <App />
+    <AuthProvider>
     <RouterProvider router={router} />
+    </AuthProvider>
   </React.StrictMode>,
 )

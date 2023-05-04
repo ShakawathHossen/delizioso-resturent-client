@@ -1,8 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './Header.css'
 import { Link, NavLink } from 'react-router-dom';
+import { AuthContext } from '../../Providers/AuthProvider';
+import { FaUserCircle } from 'react-icons/fa';
+
 
 const Header = () => {
+    
+    const {user,logOut}=useContext(AuthContext)
+    const handleLogOut=()=>{
+        logOut()
+        .then()
+        .catch(err=>console.log(err))
+    }
     return (
         <div>
             {/* navbar  */}
@@ -82,19 +92,23 @@ const Header = () => {
                                     Blog
                                 </NavLink>
                             </>
-                            <>
-                                <NavLink
-                                    to="/login"
-                                    className="normal-case text-xl px-6 py-1 text-white"
-                                    activeClassName="active"
-                                >
-                                    Login
-                                </NavLink>
-                            </>
+                           
                         </ul>
                     </div>
                     <div className="navbar-end rounded-full">
-                        <img className="w-12" src="https://i.ibb.co/JzHkmBz/user-image.png" />
+                       {user && 
+                        <FaUserCircle className='mx-4' style={{fontSize:'2rem',color:'white',backgroundColor:'#EA580C'}}></FaUserCircle>
+                     }
+                        <>
+                                {user ? <button onClick={handleLogOut}  className="normal-case text-xl px-6 py-1 text-white"
+                                    activeClassName="active">Logout</button>:
+                                <Link to='/login'>
+                                <button  className="normal-case text-xl px-6 py-1 text-white"
+                                    activeClassName="active">Login</button>
+                                </Link>
+                                }
+
+                            </>
                     </div>
                 </div>
             </div>
