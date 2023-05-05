@@ -8,6 +8,7 @@ const auth=getAuth(app);
 const AuthProvider = ({children}) => {
     const [user,setUser]=useState(null);
     const [loading,setLoading]=useState(true)
+    const [currentUser, setCurrentUser] = useState(null);
 
     const createUser=(email,password) => {
         setLoading(true);
@@ -41,6 +42,7 @@ const AuthProvider = ({children}) => {
         logOut 
         
     };
+    console.log(authinfo.user);
     return (
         <AuthContext.Provider value={authinfo}>
             {children}

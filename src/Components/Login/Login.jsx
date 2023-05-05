@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Providers/AuthProvider';
 import { ToastContainer, toast } from 'react-toastify';
@@ -18,8 +18,9 @@ const Login = () => {
     const handleGoogleSignIn=()=>{
         signInWithPopup(Auth,googleProvider)
         .then(result=>{
-            const user=result.data;
+            const loggedInUser=result.data;
             nevigate(from,{replace:true})
+            toast.success('Successfully logged in');
 
         })
         .catch(err=>{console.log(err);});

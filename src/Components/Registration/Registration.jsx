@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
 import { AuthContext } from '../../Providers/AuthProvider';
 
 const Registration = () => {
@@ -12,6 +13,12 @@ const Registration = () => {
         const photo=form.photo.value;
         const email=form.email.value;
         const password=form.password.value;
+        if(password.length<6){
+            toast.error('Password should be minimum 6 characters');
+            return;
+        }
+
+
         console.log(name,photo,email,password);
         createUser(email,password)
         .then(result=>{
@@ -21,10 +28,20 @@ const Registration = () => {
             console.log(err);
         })
     }
-
-
     return (
         <div>
+            <ToastContainer
+                position="top-right"
+                autoClose={2000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="dark"
+            />
         <div className='my-16 md:my-20 md:w-10/12 w-11/12 mx-auto'>
             <div className="container mx-auto lg:flex lg:flex-row items-center md:p-16 py-8 rounded-3xl  shadow-2xl">
                 <div className="md:w-1/2 w-full  ">
