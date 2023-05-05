@@ -6,12 +6,11 @@ import { FaUserCircle } from 'react-icons/fa';
 
 
 const Header = () => {
-    
-    const {user,logOut}=useContext(AuthContext)
-    const handleLogOut=()=>{
+    const { user, logOut } = useContext(AuthContext)
+    const handleLogOut = () => {
         logOut()
-        .then()
-        .catch(err=>console.log(err))
+            .then()
+            .catch(err => console.log(err))
     }
     return (
         <div>
@@ -69,7 +68,7 @@ const Header = () => {
                                 </li>
                             </ul>
                         </div>
-                        <img className="md:w-3/12 w-8/12" src="https://i.ibb.co/2gytMjj/logo.png" />
+                        <Link className="md:w-3/12 w-8/12" to="https://delizioso-resturent.web.app/"><img src="https://i.ibb.co/2gytMjj/logo.png" /></Link>
                     </div>
                     <div className="navbar-center hidden lg:flex">
                         <ul className="menu menu-horizontal px-1">
@@ -92,23 +91,28 @@ const Header = () => {
                                     Blog
                                 </NavLink>
                             </>
-                           
+
                         </ul>
                     </div>
                     <div className="navbar-end rounded-full">
-                       {user && 
-                        <FaUserCircle className='mx-4' style={{fontSize:'2rem',color:'white',backgroundColor:'#EA580C'}}></FaUserCircle>
-                     }
+                        {user && 
+                            <div className="tooltip tooltip-bottom" data-tip={user.displayName}>
+                                
+                                <img className='rounded-full w-8' src={user.photoURL} />
+                            
+                            </div>
+                            
+                        }
                         <>
-                                {user ? <button onClick={handleLogOut}  className="normal-case text-xl px-6 py-1 text-white"
-                                    activeClassName="active">Logout</button>:
+                            {user ? <button onClick={handleLogOut} className="normal-case text-xl px-6 py-1 text-white"
+                                activeClassName="active">Logout</button> :
                                 <Link to='/login'>
-                                <button  className="normal-case text-xl px-6 py-1 text-white"
-                                    activeClassName="active">Login</button>
+                                    <button className="normal-case text-xl px-6 py-1 text-white"
+                                        activeClassName="active">Login</button>
                                 </Link>
-                                }
+                            }
 
-                            </>
+                        </>
                     </div>
                 </div>
             </div>
