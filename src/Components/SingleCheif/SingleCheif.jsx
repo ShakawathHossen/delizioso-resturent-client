@@ -4,7 +4,7 @@ const SingleCheif = ({ cheif }) => {
   return (
     <div className='my-16 md:w-94 w-11/12 mx-auto'>
       <div className="card bg-base-100 shadow-xl">
-        <figure><img className='object-cover image-full' src={cheif.image} alt="Shoes" /></figure>
+        <figure><img className='object-cover image-full' src={cheif.image} alt="image" /></figure>
         <div className="card-body">
           <h2 className="card-title">
             {cheif.name}
