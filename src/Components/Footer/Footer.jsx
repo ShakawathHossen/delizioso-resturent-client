@@ -7,7 +7,7 @@ const Footer = () => {
                 <div className="container mx-auto px-4 py-8 md:py-12 lg:py-16 flex flex-wrap justify-between">
                     <div className="w-full md:w-1/4 mb-4 md:mb-0">
                         <h4 className="text-white text-lg font-bold mb-4">About Us</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis euismod interdum faucibus. Quisque lobortis orci et velit bibendum, a venenatis purus imperdiet.</p>
+                        <p>Our chefs use only the freshest and finest ingredients to create authentic Italian dishes that are bursting with flavor. From classic pasta dishes to wood-fired pizzas, our menu has something for everyone.</p>
                     </div>
                     <div className="w-full md:w-1/4 mb-4 md:mb-0">
                         <h4 className="text-white text-lg font-bold mb-4">Opening Hours</h4>
