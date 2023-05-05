@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Providers/AuthProvider';
+import { ToastContainer, toast } from 'react-toastify';
 import { GithubAuthProvider, GoogleAuthProvider, getAuth, signInWithPopup } from 'firebase/auth';
 import app from '../../firebase/firebase.config';
 
@@ -39,19 +40,37 @@ const Login = () => {
         const form=event.target;
         const email=form.email.value;
         const password=form.password.value;
-        console.log(email,password);
+
+        if(password.length<6){
+            toast.error('Password should be minimum 6 characters');
+            return;
+        }
+
+
         signIn(email,password)
         .then(result=>{
             const loggedUser=result.user;
-            console.log(loggedUser);
             nevigate(from,{replace:true})
+            toast.success('Successfully logged in');
         })
         .catch(err=>{
-            console.log(err);
+            toast.error('User and password not matched');
         })
     }
     return (
         <div>
+              <ToastContainer
+                position="top-right"
+                autoClose={2000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="dark"
+            />
             <div className='my-16 md:my-20 md:w-10/12 w-11/12 mx-auto'>
                 <div className="container mx-auto lg:flex lg:flex-row items-center md:p-16 py-8 rounded-3xl  shadow-2xl">
                     <div className="md:w-1/2">
