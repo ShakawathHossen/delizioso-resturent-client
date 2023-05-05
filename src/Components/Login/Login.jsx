@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Providers/AuthProvider';
-import { GoogleAuthProvider, getAuth, signInWithPopup } from 'firebase/auth';
+import { GithubAuthProvider, GoogleAuthProvider, getAuth, signInWithPopup } from 'firebase/auth';
 import app from '../../firebase/firebase.config';
 
 
@@ -11,10 +11,21 @@ const Login = () => {
     const location = useLocation()
     const from=location.state?.from.pathname || '/'
     const Auth=getAuth(app);
-    const provider= new GoogleAuthProvider();
+    const googleProvider= new GoogleAuthProvider();
+    const githubprovider= new GithubAuthProvider();
 
     const handleGoogleSignIn=()=>{
-        signInWithPopup(Auth,provider)
+        signInWithPopup(Auth,googleProvider)
+        .then(result=>{
+            const user=result.data;
+            nevigate(from,{replace:true})
+
+        })
+        .catch(err=>{console.log(err);});
+    }
+
+    const handleGithubSignIn=()=>{
+        signInWithPopup(Auth,githubprovider)
         .then(result=>{
             const user=result.data;
             nevigate(from,{replace:true})
@@ -81,7 +92,7 @@ const Login = () => {
                                         <button onClick={handleGoogleSignIn} className='px-4'>
                                             <img className='w-10' src="https://i.ibb.co/ftwyb00/Google-G-Logo-svg.png" alt="" />
                                         </button>
-                                        <button className='px-4'>
+                                        <button onClick={handleGithubSignIn} className='px-4'>
                                             <img className='w-10' src="https://i.ibb.co/VxKN3Mg/github.png" alt="" />
 
                                         </button>
