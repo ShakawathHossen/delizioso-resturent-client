@@ -25,12 +25,12 @@ const router = createBrowserRouter([
       {
         path: "/",
         element:<Home></Home>,
-        loader:()=>fetch(`http://localhost:5000/chiefs`)
+        loader:()=>fetch(`https://delizioso-server-shakawathcseinfo19-gmailcom.vercel.app/chiefs`)
       },
       {
         path: "/:id",
         element: <PrivateRoute><CheifDetails/></PrivateRoute>,
-        loader:()=>fetch(`http://localhost:5000/chiefs`)
+        loader:()=>fetch(`https://delizioso-server-shakawathcseinfo19-gmailcom.vercel.app/chiefs`)
       },
       {
         path: "/blog",

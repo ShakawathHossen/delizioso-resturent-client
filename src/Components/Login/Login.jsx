@@ -50,17 +50,24 @@ const Login = () => {
                     <div className="md:w-1/2 w-full ">
                         <div className="card flex-shrink-0 w-full">
                             <form onSubmit={handleLogin} className="card-body">
-                                <div className="form-control">
+                                <div className="form-control ">
                                     <label className="label">
                                         <span className="label-text text-lg">Email</span>
                                     </label>
+                                    <div className='indicator w-full flex-col'>
+                                    <span className="indicator-item badge bg-orange-500 border-none">Required</span>
                                     <input type="email" name='email' placeholder="Your Email" className="input input-bordered" required />
+                                    </div>
                                 </div>
                                 <div className="form-control">
                                     <label className="label">
                                         <span className="label-text text-lg">Password</span>
                                     </label>
+                                    <div className='indicator w-full flex-col'>
+                                    <span className="indicator-item badge bg-orange-500 border-none">Required</span>
                                     <input type="password" name='password' placeholder="Password" className="input input-bordered" required />
+                                    </div>
+                                    
                                     <label className="label">
                                         <a href="#" className="label-text-alt text-lg link link-hover">Forgot password?</a>
                                     </label>
@@ -69,7 +76,7 @@ const Login = () => {
                                     <button className="border border-orange-500 hover:bg-orange-500 px-10 hover:text-white text-orange-500 font-bold text-lg py-2 rounded-lg shadow duration-300">Login</button>
                                 </div>
                                 <div className='text-center  mt-6'>
-                                    <p className='text-lg'>Or Connect With</p>
+                                    <p className='text-lg  divider '>Or Connect With</p>
                                     <div className='my-4'>
                                         <button onClick={handleGoogleSignIn} className='px-4'>
                                             <img className='w-10' src="https://i.ibb.co/ftwyb00/Google-G-Logo-svg.png" alt="" />
